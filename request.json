@@ -1,0 +1,14 @@
+{
+    "text" : "cc",
+    "features" : {
+        "emotion" : {
+            "targets" : [
+                "chatbots"
+            ]
+        }
+    }
+
+}
+
+
+curl -X POST -H "Content-Type: application/json" -u "apikey:OxyNEMWt8F8REJEX7L0bTpj34SBqQrydRlyu0t58eahU" -d '{ "text" : "I love chatbots. But I am angry when they dont know how I feel!","features": {"emotion": {"targets": [ "chatbots" ]}}}' "https://gateway-syd.watsonplatform.net/natural-language-understanding/v1/analyze?version=2019-07-12"

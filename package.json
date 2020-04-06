@@ -1,0 +1,17 @@
+{
+  "name": "sentiment-analysis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "await": "^0.2.6",
+    "node-translate": "0.0.4",
+    "sentiment": "^5.0.2",
+    "translate": "^1.1.2"
+  }
+}
