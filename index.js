@@ -8,8 +8,8 @@ const Sentiment = require('sentiment');
 const sentiment = new Sentiment();
 
 
-translate.engine = 'yandex';
-translate.key = 'trnsl.1.1.20200405T051430Z.373fd13f6cc69764.f0924915e8275702bc94447ae3d6fc5dd2b199db';
+translate.engine = 'google';
+translate.key = 'AIzaSyAWZB-eFeo5mQt-dRuCvVeOeMgalpIgRdQ';
  
 let text = "saya benci banget sama kamu";
 translate(text, { from: 'id', to: 'en' }).then(textTranslate => {
