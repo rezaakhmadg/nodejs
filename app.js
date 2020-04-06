@@ -1,8 +1,16 @@
 'use strict';
 
+/* Define Library*/
 const express   = require('express')
 const bodyParser = require('body-parser')
 const axios     = require('axios')
+require('dotenv').config()
+
+const translate = require('translate');
+const Sentiment = require('sentiment');
+const sentiment = new Sentiment();
+const send = require('./lib/sendMsg');
+/*End of Define Library */
 
 const server = express()
 server.use(bodyParser.urlencoded({
@@ -10,18 +18,12 @@ server.use(bodyParser.urlencoded({
 }))
 server.use(bodyParser.json());
 
-const await     = require('await');
-const translate = require('translate');
+translate.engine = `${process.env.translate_engine}`
+translate.key = `${process.env.translate_key}`
 
-const Sentiment = require('sentiment');
-const sentiment = new Sentiment();
+const token = `${process.env.access_token}`
+const url = `${process.env.apiUrl}`
 
-
-translate.engine = 'google';
-translate.key = 'AIzaSyAWZB-eFeo5mQt-dRuCvVeOeMgalpIgRdQ';
-
-const token = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMTQ4MTMsInRpbWVzdGFtcCI6IjIwMjAtMDMtMTNUMTc6NTQ6MTcuNDY0KzA3OjAwIn0.mpvSmT8_STMk7pz5PIxff1NMz4Zz1PGW-xr0_vqGNjs'
-const url = 'https://api.chataja.co.id/api/v1/chat/conversations/'
 
 server.post('/',(req,res)=>{
     let room_id = res.req.body.chat_room.qiscus_room_id
@@ -53,8 +55,3 @@ server.post('/',(req,res)=>{
 server.listen((process.env.PORT || 3000), () => {
     console.log("Server is up and running...");
 });
-
-
-
-
-
