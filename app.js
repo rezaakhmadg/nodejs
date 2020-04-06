@@ -31,24 +31,13 @@ server.post('/',(req,res)=>{
     let nama = res.req.body.from.fullname
     
     if(msg !== null ){
-        
-        axios.post(url+'post_comment',{
-            access_token: token,
-            topic_id:room_id,
-            comment: "Score dari kata kamu adalah "+ myFunction()
-        }).then((hsl)=>{
-            console.log(hsl.data.data.username)
-        }).catch((err)=>{
-            //error
-        })
+        translate(msg, { from: 'id', to: 'en' }).then(text => {
+            console.log(text);
+            let dibaca = sentiment.analyze(text)
+            send.Txt("Score dari kata kamu adalah "+ dibaca.score,room_id)
+        });
     }
 
-    async function myFunction(){
-        msg = await translate(msg,{from: "id", to: "en"});
-        let dibaca = sentiment.analyze(msg)
-        // return dibaca.score;
-        console.log(dibaca.score);
-    }
     
 })
 
